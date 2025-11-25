@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" xmlns="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Smile Key</title>
+</head>
+<body>
+    <table style="position: fixed; top: 10px; left: 10px; border: black 1px solid; background-color: antiquewhite;">
+        <td><a href="/">Home</a></td>
+        <td><a href="/about">About</a></td>
+        <td><a href="/contact">Contact</a></td>
+    </table>
+    <table style="position: fixed; top: 10px; right: 10px; border: black 1px solid; background-color: antiquewhite;">
+        <td><a href="/login">Login</a></td>
+        <td><a href="/register">Register</a></td>
+    </table>
+
+
+    <h1>List user</h1>
+    <a href="/users/add">Add New User</a>
+    <table>
+        <thead>
+            <tr>Id </tr>
+            <tr>Name </tr>
+            <tr>Username </tr>
+            <tr>Password </tr>
+            <tr>Role </tr>
+            <tr>Status</tr>
+            <tr>Action</tr>
+        </thead>
+        <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.username}"></td>
+                <td th:text="${user.password}"></td>
+                <td th:text="${user.role}"></td>
+                <td th:text="${user.status}"></td>
+                <td>
+                    <a th:href="@{'/users/edit/' + ${user.id}}">Edit</a>
+                    <a th:href="@{'/users/delete/' + ${user.id}}">Delete</a>
+                </td>
+            </tr>
+    </table>
+
+
+    <footer style="position: fixed; bottom: 0; width: 100%; background-color: antiquewhite; text-align: center;border: black 1px solid;">
+        <p>&copy; 2025 Smile Key</p>
+    </footer>
+</body>
+</html>
