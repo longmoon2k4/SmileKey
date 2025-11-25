@@ -21,34 +21,4 @@ public class UserController {
         model.addAttribute("users", userService.getAllUsers());
         return "user/users";
     }
-
-    @GetMapping("/users/add")
-    public String getAddUserPage(Model model) {
-        model.addAttribute("user", new User());
-        return "user/add-user";
-    }
-
-    @PostMapping("/users/add")
-    public String addUser(@ModelAttribute User user) {
-        userService.saveUser(user);
-        return "redirect:/users";
-    }
-
-    @GetMapping("/users/edit/{id}")
-    public String getEditUserPage(@PathVariable Long id, Model model) {
-        model.addAttribute("user", userService.getUserById(id));
-        return "user/edit-user";
-    }
-
-    @PostMapping("/users/edit/{id}")
-    public String updateUser(@PathVariable Long id, @ModelAttribute User user) {
-        userService.saveUser(user);
-        return "redirect:/users";
-    }
-
-    @GetMapping("/users/delete/{id}")
-    public String deleteUser(@PathVariable Long id) {
-        userService.deleteUser(id);
-        return "redirect:/users";
-    }
 }
